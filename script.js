@@ -13,7 +13,7 @@ function generatePassword(){
   var passwordLength = prompt("How long do you want your password to be? The length need to be between 8 and 128 characters."); 
   if (passwordLength < 8 || passwordLength > 128){
     alert("Invalid Response");
-    return; 
+    return ""; 
   }
 
   var uppercase = confirm("Do you want uppercase letters in your passwords?");
@@ -23,24 +23,24 @@ function generatePassword(){
   var password = "";
   var possibleChar = []; 
   if (uppercase){
-    possibleChar.concat(uppers);
+   possibleChar = possibleChar.concat(uppers);
   }
   if (lowercase){
-    possibleChar.concat(lowers);
+   possibleChar = possibleChar.concat(lowers);
   }
   if (numbers){
-    possibleChar.concat(nums);
+    possibleChar = possibleChar.concat(nums);
   }
   if (specialChar){
-    possibleChar.concat(specials);
+    possibleChar = possibleChar.concat(specials);
   }
   if(!uppercase && !lowercase && !numbers && !specialChar) {
     alert("You must choose at least one option");
-    return;
+    return "";
   }
   console.log(possibleChar);
   for (i=0; i< passwordLength; i++){
-    password += possibleChar[Math.floor(Math.random * possibleChar.length)]
+    password += possibleChar[Math.floor(Math.random() * possibleChar.length)]
   }
   return password; 
 }
